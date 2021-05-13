@@ -2,7 +2,7 @@ package dto;
 
 public class Account {
 
-	private int acId;
+	private int accountId;
 	private String bank;
 	private String accountHolder;
 	private String accountType;
@@ -12,9 +12,9 @@ public class Account {
 	public Account() {
 	}
 
-	public Account(int acId, String bank, String accountHolder, String accountType, String accountNumber,
+	public Account(int accountId, String bank, String accountHolder, String accountType, String accountNumber,
 			String branchCode) {
-		this.acId = acId;
+		this.accountId = accountId;
 		this.bank = bank;
 		this.accountHolder = accountHolder;
 		this.accountType = accountType;
@@ -22,12 +22,12 @@ public class Account {
 		this.branchCode = branchCode;
 	}
 
-	public int getAcId() {
-		return acId;
+	public int getAccountId() {
+		return accountId;
 	}
 
-	public void setAcId(int acId) {
-		this.acId = acId;
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
 	}
 
 	public String getBank() {

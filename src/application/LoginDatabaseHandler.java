@@ -1,11 +1,11 @@
 package application;
 
 import database.DatabaseHandler;
-import dto.Owner;
+import dto.Person;
 
 public class LoginDatabaseHandler extends DatabaseHandler {
 	
-	public Owner signIn(String username, String password) {
+	public Person signIn(String username, String password) {
 		return null;
 		
 	}

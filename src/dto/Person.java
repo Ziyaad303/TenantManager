@@ -1,37 +1,48 @@
 package dto;
 
+import java.util.List;
+
 public class Person {
 
-	private int peId;
+	private int personId;
+	private boolean owner;
 	private String firstName;
 	private String lastName;
 	private String idNumber;
 	private String email;
 	private String phone;
-	private int acId;
 	private int status;
+	private List<Account> accounts;
 
 	public Person() {
 	}
 
-	public Person(int peId, String firstName, String lastName, String idNumber, String email, String phone, int acId,
-			int status) {
-		this.peId = peId;
+	public Person(int personId, boolean owner, String firstName, String lastName, String idNumber, String email, String phone,	int status, List<Account> accounts) {
+		this.personId = personId;
+		this.owner = owner;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.idNumber = idNumber;
 		this.email = email;
 		this.phone = phone;
-		this.acId = acId;
 		this.status = status;
+		this.accounts = accounts;
 	}
 
-	public int getPeId() {
-		return peId;
+	public int getPersonId() {
+		return personId;
 	}
 
-	public void setPeId(int peId) {
-		this.peId = peId;
+	public void setPersonId(int personId) {
+		this.personId = personId;
+	}
+
+	public boolean isOwner() {
+		return owner;
+	}
+
+	public void setOwner(boolean owner) {
+		this.owner = owner;
 	}
 
 	public String getFirstName() {
@@ -74,20 +85,20 @@ public class Person {
 		this.phone = phone;
 	}
 
-	public int getAcId() {
-		return acId;
-	}
-
-	public void setAcId(int acId) {
-		this.acId = acId;
-	}
-
 	public int getStatus() {
 		return status;
 	}
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
 	}
 
 }

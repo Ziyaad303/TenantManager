@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Tenant {
 
-	private int id;
+	private int tenantId;
 	private int personId;
 	private int propertyId;
 	private Date startDate;
@@ -15,8 +15,8 @@ public class Tenant {
 		
 	}
 
-	public Tenant(int id, int personId, int propertyId, Date startDate, int leasePeriod, String documents) {
-		this.id = id;
+	public Tenant(int tenantId, int personId, int propertyId, Date startDate, int leasePeriod, String documents) {
+		this.tenantId = tenantId;
 		this.personId = personId;
 		this.propertyId = propertyId;
 		this.startDate = startDate;
@@ -24,12 +24,12 @@ public class Tenant {
 		this.documents = documents;
 	}
 
-	public int getId() {
-		return id;
+	public int getTenantId() {
+		return tenantId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setTenantId(int tenantId) {
+		this.tenantId = tenantId;
 	}
 
 	public int getPersonId() {

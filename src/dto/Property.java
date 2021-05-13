@@ -1,11 +1,12 @@
 package dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class Property {
 
-	private int prId;
-	private int ownerId;
+	private int propertyId;
+	private int personId;
 	private String complexName;
 	private String streetAddress;
 	private String suburb;
@@ -15,14 +16,17 @@ public class Property {
 	private int firstWaterReading;
 	private int firstElecReading;
 	private int status;
+	private List<WaterReadings> waterReadings;
+	private List<ElectricityReadings> electricityReadings;
 
 	public Property() {
 	}
 
-	public Property(int prId, int ownerId, String complexName, String streetAddress, String suburb, String areaCode,
-			String province, Date purchaseDate, int firstWaterReading, int firstElecReading, int status) {
-		this.prId = prId;
-		this.ownerId = ownerId;
+	public Property(int propertyId, int personId, String complexName, String streetAddress, String suburb,
+			String areaCode, String province, Date purchaseDate, int firstWaterReading, int firstElecReading,
+			int status, List<WaterReadings> waterReadings, List<ElectricityReadings> electricityReadings) {
+		this.propertyId = propertyId;
+		this.personId = personId;
 		this.complexName = complexName;
 		this.streetAddress = streetAddress;
 		this.suburb = suburb;
@@ -32,22 +36,24 @@ public class Property {
 		this.firstWaterReading = firstWaterReading;
 		this.firstElecReading = firstElecReading;
 		this.status = status;
+		this.waterReadings = waterReadings;
+		this.electricityReadings = electricityReadings;
 	}
 
-	public int getPrId() {
-		return prId;
+	public int getPropertyId() {
+		return propertyId;
 	}
 
-	public void setPrId(int prId) {
-		this.prId = prId;
+	public void setPropertyId(int propertyId) {
+		this.propertyId = propertyId;
 	}
 
-	public int getOwnerId() {
-		return ownerId;
+	public int getPersonId() {
+		return personId;
 	}
 
-	public void setOwnerId(int ownerId) {
-		this.ownerId = ownerId;
+	public void setPersonId(int personId) {
+		this.personId = personId;
 	}
 
 	public String getComplexName() {
@@ -120,6 +126,22 @@ public class Property {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public List<WaterReadings> getWaterReadings() {
+		return waterReadings;
+	}
+
+	public void setWaterReadings(List<WaterReadings> waterReadings) {
+		this.waterReadings = waterReadings;
+	}
+
+	public List<ElectricityReadings> getElectricityReadings() {
+		return electricityReadings;
+	}
+
+	public void setElectricityReadings(List<ElectricityReadings> electricityReadings) {
+		this.electricityReadings = electricityReadings;
 	}
 
 }
