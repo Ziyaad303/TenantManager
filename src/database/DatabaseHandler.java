@@ -10,17 +10,18 @@ public class DatabaseHandler {
 	protected String dbUser = "root";
 	protected String dbPass = "Ziyaad303!";
 	protected String dbName = "invoice";
+	protected String sqliteDriverName = "org.sqlite.JDBC";
 	
 	Connection dbConnection;
 	
 	public Connection getDbConnection() throws ClassNotFoundException, SQLException{
-		String connectionString = "jdbc:mysql://" + dbHost + ":"
-				+ dbPort + "/" + dbName;
+//		String connectionString = "jdbc:mysql://" + dbHost + ":"
+//				+ dbPort + "/" + dbName;
+		String connectionString = "jdbc:sqlite:C:\\Users\\Ziyaad\\OCDev\\Eclipse workspace\\misc\\TenantManager\\TenantManagerDb.db";
 		
-//		Class.forName("com.mysql.jdbc.Driver");
-		Class.forName("com.mysql.cj.jdbc.Driver");
+		Class.forName(sqliteDriverName);
 		
-		dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
+		dbConnection = DriverManager.getConnection(connectionString);
 		
 		return dbConnection;
 	}

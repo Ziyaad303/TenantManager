@@ -4,5 +4,8 @@ module TenantManager {
 	requires javafx.graphics;
 	requires java.sql;
 	
+	opens utils;
+	opens dto;
 	opens application;
+	opens signUp;
 }
