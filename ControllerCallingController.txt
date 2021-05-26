@@ -1,0 +1,49 @@
+in secondController:
+
+    	System.out.println("Sign UP with credentials");
+    	
+    	registerButton.setOnAction(event -> {
+    		FXMLLoader loader = new FXMLLoader();
+    		loader.setLocation(getClass().getResource("SignUp.fxml"));
+    		Parent parent = null;
+			try {
+				parent = loader.load();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+    		Scene scene = new Scene(parent);
+
+    		SignUpController controller = loader.getController();
+    		System.out.println("The Controller is: " + controller.toString());
+    		System.out.println(usernameInput.getText().trim() + " " +  passwordInput.getText().trim());
+    		controller.setCredentials(usernameInput.getText().trim(), passwordInput.getText().trim());
+    	});
+    	
+    	
+    
+    
+In main controller:
+    void initialize() {
+    	
+//    	try {
+//    		pane = FXMLLoader.load(getClass().getResource("SignUpCredentials.fxml"));
+//    		credentialsPane.getChildren().setAll(pane);
+//    	} catch(IOException e) {
+//    		e.printStackTrace();
+//    	}
+
+    }
+    
+    public void setCredentials(String username, String password) {
+    	this.username = username;
+    	this.password = password;
+    	
+    	System.out.println("SignUpController: ");
+    	System.out.println("FirstName: " + firstNameInput.getText());
+    	System.out.println("SecondName: " + lastNameInput.getText());
+    	System.out.println("idNumber : " + idNumberInput.getText());
+    	System.out.println("Username : " + username);
+    	
+    	
+    }

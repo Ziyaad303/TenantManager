@@ -4,10 +4,15 @@ import java.io.IOException;
 
 import dto.Person;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import signUp.SignUpController;
 import utils.BaseController;
 
 public class LoginController extends BaseController {
@@ -57,7 +62,15 @@ public class LoginController extends BaseController {
 	private void signUpUser() {
 		hideScreen(loginButton);
 		try {
-			loadScreen("/signUp/SignUp.fxml");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/signUp/SignUp.fxml"));
+			Parent root = (Parent) loader.load();
+			
+			SignUpController controller = loader.getController();
+			controller.setOwner(true);
+			
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

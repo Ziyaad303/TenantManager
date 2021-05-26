@@ -1,12 +1,13 @@
 package signUp;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import dto.Account;
+import dto.Person;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import utils.BaseController;
@@ -14,37 +15,62 @@ import utils.BaseController;
 public class SignUpController extends BaseController{
 
     @FXML
-    private TextField firstNameInput, lastNameInput, idNumberInput, emailInput, phoneInput;
+    private TextField firstNameInput, lastNameInput, idNumberInput, emailInput, phoneInput, usernameInput;
+    
+    @FXML
+    private TextField bankInput, accountHolderInput, accountTypeInput, accountNumberInput, branchCodeInput;
 
     @FXML
-    private AnchorPane credentialsPane, pane;
+    private AnchorPane credentialsPane;
+
+    @FXML
+    private PasswordField passwordInput;
 
     @FXML
     private Button registerButton;
 
     private String username, password;
+    private boolean isOwner;
+    
     @FXML
     void initialize() {
     	
-    	try {
-    		pane = FXMLLoader.load(getClass().getResource("SignUpCredentials.fxml"));
-    		credentialsPane.getChildren().setAll(pane);
-    	} catch(IOException e) {
-    		e.printStackTrace();
-    	}
-
+    	registerButton.setOnAction(event -> {
+    		Person person = capturePerson();
+    		
+    	});
+    	
     }
     
-    public void setCredentials(String username, String password) {
-    	this.username = username;
-    	this.password = password;
+    private Person capturePerson() {
+    	Person person = new Person();
+    	person.setFirstName(firstNameInput.getText().trim());
+    	person.setLastName(lastNameInput.getText().trim());
+    	person.setIdNumber(idNumberInput.getText().trim());
+    	person.setEmail(emailInput.getText().trim());
+    	person.setPhone(phoneInput.getText().trim());
+    	person.setOwner(isOwner);
     	
-    	System.out.println("SignUpController: ");
-    	System.out.println("FirstName: " + firstNameInput.getText());
-    	System.out.println("SecondName: " + lastNameInput.getText());
-    	System.out.println("idNumber : " + idNumberInput.getText());
-    	System.out.println("Username : " + username);
+    	Account account = new Account();
+    	account.setBank(bankInput.getText().trim());
+    	account.setAccountHolder(accountHolderInput.getText().trim());
+    	account.setAccountType(accountTypeInput.getText().trim());
+    	account.setAccountNumber(accountNumberInput.getText().trim());
+    	account.setBranchCode(branchCodeInput.getText().trim());
     	
+    	List<Account> accounts = new ArrayList<Account>();
+    	accounts.add(account);
     	
+    	person.setAccounts(accounts);
+    	return person;
     }
+
+	public boolean isOwner() {
+		return isOwner;
+	}
+
+	public void setOwner(boolean isOwner) {
+		this.isOwner = isOwner;
+		credentialsPane.setVisible(isOwner);
+	}
 }
