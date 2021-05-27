@@ -12,14 +12,13 @@ import utils.Constants;
 
 public class SignUpDatabaseHandler extends DatabaseHandler {
 
-	private static final String ADD_NEW_PERSON = "insert into person(peusername, pepassowrd, peisowner, pefirstname, pelastname, peidnumber, peemail, pephone, pestatus) values (?,?,?,?,?,?,?,?,?)";
+	private static final String ADD_NEW_PERSON = "insert into person(peusername, pepassword, peisowner, pefirstname, pelastname, peidnumber, peemail, pephone, pestatus) values (?,?,?,?,?,?,?,?,?)";
 	private static final String SELECT_PEID = "select peid from person where peidnumber = ? and pestatus = ?";
 	private static final String ADD_NEW_ACCOUNT = "insert into account(acpeid, acbank, acholder, actype, acnumber, acbrcode) values (?,?,?,?,?,?)";
 
 	public boolean signUpUser(Person person, String username, String password) {
 
-		try {
-			PreparedStatement addNewPerson = getDbConnection().prepareStatement(ADD_NEW_PERSON);
+		try (PreparedStatement addNewPerson = getDbConnection().prepareStatement(ADD_NEW_PERSON)) {
 			addNewPerson.setString(1, username);
 			addNewPerson.setString(2, password);
 			addNewPerson.setBoolean(3, person.isOwner());
@@ -33,7 +32,7 @@ public class SignUpDatabaseHandler extends DatabaseHandler {
 			if (addNewPerson.executeUpdate() > 0) {
 				if (person.isOwner()) {
 					System.out.println("New User Signed Up.");
-					
+
 					return addNewAccount(retrievePersonId(person.getIdNumber()), person.getAccounts());
 				} else {
 					System.out.println("New Person Added.");
@@ -49,14 +48,15 @@ public class SignUpDatabaseHandler extends DatabaseHandler {
 	}
 
 	public int retrievePersonId(String idNumber) {
-		try {
-			PreparedStatement retrievePersonId = getDbConnection().prepareStatement(SELECT_PEID);
+		try (PreparedStatement retrievePersonId = getDbConnection().prepareStatement(SELECT_PEID)) {
+
 			retrievePersonId.setString(1, idNumber);
 			retrievePersonId.setInt(2, Constants.ACTIVE);
 			ResultSet rs = retrievePersonId.executeQuery();
 
 			if (rs.next()) {
-				return rs.getInt("PEID");
+				int peId = rs.getInt("PEID");
+				return peId;
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -68,8 +68,7 @@ public class SignUpDatabaseHandler extends DatabaseHandler {
 	}
 
 	public boolean addNewAccount(int personId, List<Account> accounts) {
-		try {
-			PreparedStatement ps = getDbConnection().prepareStatement(ADD_NEW_ACCOUNT);
+		try (PreparedStatement ps = getDbConnection().prepareStatement(ADD_NEW_ACCOUNT)){
 			ps.setInt(1, personId);
 			for (Account account : accounts) {
 				ps.setString(2, account.getBank());

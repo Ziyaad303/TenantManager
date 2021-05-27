@@ -1,5 +1,6 @@
 package signUp;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,16 @@ public class SignUpController extends BaseController{
     	
     	registerButton.setOnAction(event -> {
     		Person person = capturePerson();
-    		dbHandler.signUpUser(person, username, password);
+    		boolean success = dbHandler.signUpUser(person, username, password);
+    		
+    		if(success) {
+    			hideScreen(registerButton);
+    			try {
+					loadScreen("/application/Login.fxml");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+    		}
     		
     	});
     	
