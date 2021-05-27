@@ -50,8 +50,9 @@ public class LoginController extends BaseController {
 		if (person != null) {
 			hideScreen(loginButton);
 			try {
-				loadScreen("");
-			} catch (IOException e) {
+//				loadScreen("");
+				System.out.println("Login Successful: " + person.getAccounts().get(0).getAccountNumber());
+			} catch (Exception e) { // ioexception
 				e.printStackTrace();
 			}
 		} else {
