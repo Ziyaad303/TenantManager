@@ -32,11 +32,15 @@ public class SignUpController extends BaseController{
     private String username, password;
     private boolean isOwner;
     
+    SignUpDatabaseHandler dbHandler;
+    
     @FXML
     void initialize() {
+    	dbHandler = new SignUpDatabaseHandler();
     	
     	registerButton.setOnAction(event -> {
     		Person person = capturePerson();
+    		dbHandler.signUpUser(person, username, password);
     		
     	});
     	
@@ -44,6 +48,8 @@ public class SignUpController extends BaseController{
     
     private Person capturePerson() {
     	Person person = new Person();
+    	this.username = usernameInput.getText().trim();
+    	this.password = passwordInput.getText().trim();
     	person.setFirstName(firstNameInput.getText().trim());
     	person.setLastName(lastNameInput.getText().trim());
     	person.setIdNumber(idNumberInput.getText().trim());
