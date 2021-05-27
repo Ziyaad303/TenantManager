@@ -35,5 +35,22 @@ public class BaseController {
 		stage.show();
 		
 	}
+	
+	protected void signUpPerson(boolean isOwner) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/signUp/SignUp.fxml"));
+			Parent root = (Parent) loader.load();
+			
+			SignUpController controller = loader.getController();
+			controller.setOwner(isOwner);
+			
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 }

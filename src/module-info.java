@@ -8,4 +8,5 @@ module TenantManager {
 	opens dto;
 	opens application;
 	opens signUp;
+	opens owner.home;
 }
