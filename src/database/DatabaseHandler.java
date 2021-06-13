@@ -22,7 +22,6 @@ public class DatabaseHandler {
 		Class.forName(sqliteDriverName);
 		
 		dbConnection = DriverManager.getConnection(connectionString);
-		
 		return dbConnection;
 	}
 
