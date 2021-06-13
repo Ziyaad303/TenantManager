@@ -1,22 +1,24 @@
 package dto;
 
-import java.util.Date;
-
-public class ElectricityReadings {
+public class ElectricityReading {
 
 	private int electricityReadingsId;
 	private int propertyId;
-	private Date readingDate;
+	private int tenantId;
+	private String readingDate;
 	private int unitsUsed;
+	private int sequence;
 	
-	public ElectricityReadings() {
+	public ElectricityReading() {
 	}
 
-	public ElectricityReadings(int electricityReadingsId, int propertyId, Date readingDate, int unitsUsed) {
+	public ElectricityReading(int electricityReadingsId, int propertyId, int tenantId, String readingDate, int unitsUsed, int sequence) {
 		this.electricityReadingsId = electricityReadingsId;
 		this.propertyId = propertyId;
+		this.tenantId = tenantId;
 		this.readingDate = readingDate;
 		this.unitsUsed = unitsUsed;
+		this.sequence = sequence;
 	}
 
 	public int getElectricityReadingsId() {
@@ -34,12 +36,20 @@ public class ElectricityReadings {
 	public void setPropertyId(int propertyId) {
 		this.propertyId = propertyId;
 	}
+	
+	public int getTenantId() {
+		return tenantId;
+	}
 
-	public Date getReadingDate() {
+	public void setTenantId(int tenantId) {
+		this.tenantId = tenantId;
+	}
+
+	public String getReadingDate() {
 		return readingDate;
 	}
 
-	public void setReadingDate(Date readingDate) {
+	public void setReadingDate(String readingDate) {
 		this.readingDate = readingDate;
 	}
 
@@ -49,5 +59,13 @@ public class ElectricityReadings {
 
 	public void setUnitsUsed(int unitsUsed) {
 		this.unitsUsed = unitsUsed;
+	}
+	
+	public int getSequence() {
+		return sequence;
+	}
+
+	public void setSequence(int sequence) {
+		this.sequence = sequence;
 	}
 }

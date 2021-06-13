@@ -1,22 +1,24 @@
 package dto;
 
-import java.util.Date;
-
-public class WaterReadings {
+public class WaterReading {
 
 	private int waterReadingsId;
 	private int propertyId;
-	private Date readingDate;
+	private int tenantId;
+	private String readingDate;
 	private int unitsUsed;
+	private int sequence;
 
-	public WaterReadings() {
+	public WaterReading() {
 	}
 
-	public WaterReadings(int waterReadingsId, int propertyId, Date readingDate, int unitsUsed) {
+	public WaterReading(int waterReadingsId, int propertyId, int tenantId, String readingDate, int unitsUsed, int sequence) {
 		this.waterReadingsId = waterReadingsId;
 		this.propertyId = propertyId;
+		this.tenantId = tenantId;
 		this.readingDate = readingDate;
 		this.unitsUsed = unitsUsed;
+		this.sequence = sequence;
 	}
 
 	public int getWaterReadingsId() {
@@ -35,11 +37,19 @@ public class WaterReadings {
 		this.propertyId = propertyId;
 	}
 
-	public Date getReadingDate() {
+	public int getTenantId() {
+		return tenantId;
+	}
+
+	public void setTenantId(int tenantId) {
+		this.tenantId = tenantId;
+	}
+
+	public String getReadingDate() {
 		return readingDate;
 	}
 
-	public void setReadingDate(Date readingDate) {
+	public void setReadingDate(String readingDate) {
 		this.readingDate = readingDate;
 	}
 
@@ -49,6 +59,14 @@ public class WaterReadings {
 
 	public void setUnitsUsed(int unitsUsed) {
 		this.unitsUsed = unitsUsed;
+	}
+
+	public int getSequence() {
+		return sequence;
+	}
+
+	public void setSequence(int sequence) {
+		this.sequence = sequence;
 	}
 
 }

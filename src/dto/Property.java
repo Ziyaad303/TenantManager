@@ -12,19 +12,19 @@ public class Property {
 	private String suburb;
 	private String areaCode;
 	private String province;
-	private Date purchaseDate;
+	private String purchaseDate;
 	private int firstWaterReading;
 	private int firstElecReading;
 	private int status;
-	private List<WaterReadings> waterReadings;
-	private List<ElectricityReadings> electricityReadings;
+	private List<WaterReading> waterReadings;
+	private List<ElectricityReading> electricityReadings;
 
 	public Property() {
 	}
 
 	public Property(int propertyId, int personId, String complexName, String streetAddress, String suburb,
-			String areaCode, String province, Date purchaseDate, int firstWaterReading, int firstElecReading,
-			int status, List<WaterReadings> waterReadings, List<ElectricityReadings> electricityReadings) {
+			String areaCode, String province, String purchaseDate, int firstWaterReading, int firstElecReading,
+			int status, List<WaterReading> waterReadings, List<ElectricityReading> electricityReadings) {
 		this.propertyId = propertyId;
 		this.personId = personId;
 		this.complexName = complexName;
@@ -96,11 +96,11 @@ public class Property {
 		this.province = province;
 	}
 
-	public Date getPurchaseDate() {
+	public String getPurchaseDate() {
 		return purchaseDate;
 	}
 
-	public void setPurchaseDate(Date purchaseDate) {
+	public void setPurchaseDate(String purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 
@@ -128,19 +128,19 @@ public class Property {
 		this.status = status;
 	}
 
-	public List<WaterReadings> getWaterReadings() {
+	public List<WaterReading> getWaterReadings() {
 		return waterReadings;
 	}
 
-	public void setWaterReadings(List<WaterReadings> waterReadings) {
+	public void setWaterReadings(List<WaterReading> waterReadings) {
 		this.waterReadings = waterReadings;
 	}
 
-	public List<ElectricityReadings> getElectricityReadings() {
+	public List<ElectricityReading> getElectricityReadings() {
 		return electricityReadings;
 	}
 
-	public void setElectricityReadings(List<ElectricityReadings> electricityReadings) {
+	public void setElectricityReadings(List<ElectricityReading> electricityReadings) {
 		this.electricityReadings = electricityReadings;
 	}
 
